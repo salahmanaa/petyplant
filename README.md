@@ -129,22 +129,17 @@ npx serve .
 
 Projet réalisé par des étudiants de l'**École Marocaine des Sciences de l'Ingénieur (EMSI) — Tanger**
 
-| Prénom & Nom         | Rôle               |
-|----------------------|--------------------|
-| Salaheddine Manaa    | Développeur Web    |
-| Saad Tmimi           | Développeur IoT    |
-| Yassine Jannane      | Intégration HW/SW  |
-| Yassir Amrani        | Design & UI        |
-| Zaid Harboul         | Documentation      |
+| Prénom & Nom         | 
+|----------------------|
+| Salaheddine Manaa    | 
+| Saad Tmimi           | 
+| Yassine Jannane      |
+| Yassir Amrani        | 
+| Zaid Harboul         |
 
 ---
 
-## 📞 Contact
 
-- 📍 Angle Rue Omar Ibn Abdelaziz & Rue Sejelmassa, 90060 Tanger, Maroc
-- 📞 +212-539-940308
-- 📧 informations@emsi.ma
-- 🌐 [EMSI Tanger](https://www.emsi.ma/)
 
 ---
 
