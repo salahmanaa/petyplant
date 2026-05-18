@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PETYPLANT — Système d'arrosage automatique intelligent pour vos plantes. Capteurs IoT, IA intégrée et contrôle à distance depuis Tanger, Maroc.">
+  <meta name="keywords" content="arrosage automatique, IoT, plantes, jardin intelligent, Arduino, EMSI Tanger">
+  <meta name="author" content="PETYPLANT Team — EMSI Tanger">
+  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=2.0">
+  <title>PETYPLANT — Arrosage Automatique Intelligent</title>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="header" id="header">
+  <nav class="nav container">
+    <a href="#" class="nav__logo">
+      <i class="ri-leaf-line nav__logo-icon"></i>
+      <span>PETYPLANT</span>
+    </a>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li><a href="#home"     class="nav__link active">Accueil</a></li>
+        <li><a href="#about"    class="nav__link">À Propos</a></li>
+        <li><a href="#features" class="nav__link">Fonctionnalités</a></li>
+        <li><a href="products.html" class="nav__link">Produits</a></li>
+        <li><a href="#faq"      class="nav__link">FAQ</a></li>
+        <li><a href="#contact"  class="nav__link">Contact</a></li>
+      </ul>
+      <button class="nav__close" id="nav-close" aria-label="Fermer le menu">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+    <div class="nav__actions">
+      <a href="dashboard.html" class="btn btn--outline btn--sm">
+        <i class="ri-dashboard-line"></i> Dashboard
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Ouvrir le menu">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="main">
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="home">
+    <div class="hero__particles" id="particles" aria-hidden="true"></div>
+    <div class="hero__container">
+      <div class="hero__data">
+        <span class="badge"><i class="ri-cpu-line"></i> Technologie IoT Avancée</span>
+        <h1 class="hero__title">
+          Arrosez <span class="text-gradient">intelligemment</span><br>votre jardin
+        </h1>
+        <p class="hero__description">
+          Révolutionnez l'entretien de vos plantes avec notre système IoT autonome.
+          Capteurs en temps réel, IA intégrée et contrôle depuis votre smartphone.
+        </p>
+        <div class="hero__actions">
+          <a href="#about" class="btn btn--primary btn--lg">
+            Découvrir <i class="ri-arrow-down-line"></i>
+          </a>
+          <a href="dashboard.html" class="btn btn--ghost btn--lg">
+            <i class="ri-play-circle-line"></i> Voir la Démo
+          </a>
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <span class="hero__stat-value" data-count="500">0</span><span>+</span>
+            <span class="hero__stat-label">Plantes</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value" data-count="98">0</span><span>%</span>
+            <span class="hero__stat-label">Satisfaction</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value" data-count="24">0</span><span>/7</span>
+            <span class="hero__stat-label">Surveillance</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__media">
+        <div class="hero__video-wrapper">
+          <video autoplay muted loop playsinline class="hero__video">
+            <source src="assets/video/hero.mp4" type="video/mp4">
+          </video>
+          <div class="hero__video-glow"></div>
+        </div>
+        <div class="hero__floating hero__floating--1">
+          <i class="ri-temp-hot-line"></i><span>24°C</span>
+        </div>
+        <div class="hero__floating hero__floating--2">
+          <i class="ri-water-flash-line"></i><span>Humidité 72%</span>
+        </div>
+        <div class="hero__floating hero__floating--3">
+          <i class="ri-sun-line"></i><span>Optimal</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section class="about section" id="about">
+    <div class="about__container container">
+      <div class="about__img-wrapper">
+        <img src="assets/img/ARROSAGE.png" alt="Système d'arrosage PETYPLANT" class="about__img">
+        <div class="about__img-glow"></div>
+      </div>
+      <div class="about__data">
+        <span class="section__label">À Propos de PETYPLANT</span>
+        <h2 class="section__title">Un système intelligent,<br>pour des plantes épanouies</h2>
+        <p class="about__description">
+          PETYPLANT est né d'une vision : rendre l'entretien des plantes simple, précis et accessible à tous.
+          Grâce à une combinaison de capteurs avancés et d'intelligence artificielle, notre système assure
+          une irrigation optimale à chaque instant — même en votre absence.
+        </p>
+        <ul class="about__features">
+          <li class="about__feature">
+            <span class="about__feature-icon"><i class="ri-water-flash-line"></i></span>
+            <div><strong>Capteur de niveau d'eau</strong><p>Surveillance continue du réservoir avec alertes automatiques</p></div>
+          </li>
+          <li class="about__feature">
+            <span class="about__feature-icon"><i class="ri-sun-line"></i></span>
+            <div><strong>Capteur d'ensoleillement</strong><p>Adaptation de l'arrosage selon la luminosité ambiante</p></div>
+          </li>
+          <li class="about__feature">
+            <span class="about__feature-icon"><i class="ri-temp-hot-line"></i></span>
+            <div><strong>Capteur de température</strong><p>Ajustement en temps réel selon les conditions climatiques</p></div>
+          </li>
+          <li class="about__feature">
+            <span class="about__feature-icon"><i class="ri-brain-line"></i></span>
+            <div><strong>Intelligence artificielle</strong><p>Apprentissage des besoins spécifiques de chaque plante</p></div>
+          </li>
+          <li class="about__feature">
+            <span class="about__feature-icon"><i class="ri-camera-line"></i></span>
+            <div><strong>Surveillance par caméra</strong><p>Monitoring visuel en temps réel de vos plantes</p></div>
+          </li>
+        </ul>
+        <a href="products.html" class="btn btn--primary">
+          Nos Produits <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section class="steps section" id="how-it-works">
+    <div class="container">
+      <span class="section__label section__label--center">Comment ça marche</span>
+      <h2 class="section__title section__title--center">
+        Pourquoi choisir <span class="text-gradient">PETYPLANT</span> ?
+      </h2>
+      <p class="section__subtitle">
+        Trois piliers fondamentaux qui font de PETYPLANT le système d'arrosage le plus intelligent du marché.
+      </p>
+      <div class="steps__grid">
+        <article class="step-card">
+          <div class="step-card__number">01</div>
+          <div class="step-card__icon"><i class="ri-seedling-line"></i></div>
+          <h3 class="step-card__title">Croissance Saine</h3>
+          <p class="step-card__description">
+            Nos capteurs assurent aux plantes les conditions idéales pour favoriser leur santé
+            et leur épanouissement tout au long de l'année.
+          </p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">02</div>
+          <div class="step-card__icon"><i class="ri-drop-line"></i></div>
+          <h3 class="step-card__title">Économie d'Eau</h3>
+          <p class="step-card__description">
+            Zéro gaspillage. Le système n'irrigue que la quantité exacte dont chaque plante
+            a besoin, selon son espèce et les conditions du moment.
+          </p>
+        </article>
+        <article class="step-card">
+          <div class="step-card__number">03</div>
+          <div class="step-card__icon"><i class="ri-smartphone-line"></i></div>
+          <h3 class="step-card__title">Contrôle à Distance</h3>
+          <p class="step-card__description">
+            Gérez votre jardin depuis n'importe où via notre interface web. Alertes, historique
+            et contrôle manuel à portée de main.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURES ==================== -->
+  <section class="features section" id="features">
+    <div class="container">
+      <span class="section__label section__label--center">Fonctionnalités</span>
+      <h2 class="section__title section__title--center">Tout ce dont vos plantes ont besoin</h2>
+      <p class="section__subtitle">
+        Un écosystème complet de technologies au service de la santé de vos plantes.
+      </p>
+      <div class="features__grid">
+        <div class="feature-card">
+          <div class="feature-card__icon"><i class="ri-water-flash-line"></i></div>
+          <h3>Irrigation Précise</h3>
+          <p>Dosage millimétrique adapté aux besoins de chaque espèce végétale</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon"><i class="ri-cpu-line"></i></div>
+          <h3>Arduino & IoT</h3>
+          <p>Matériel robuste basé sur microcontrôleur Arduino haute performance</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon"><i class="ri-brain-line"></i></div>
+          <h3>IA Conversationnelle</h3>
+          <p>Agent IA intégré pour répondre à vos questions sur l'entretien</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon"><i class="ri-camera-line"></i></div>
+          <h3>Vision par Caméra</h3>
+          <p>Détection visuelle automatique de l'état de santé de vos plantes</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon"><i class="ri-notification-3-line"></i></div>
+          <h3>Alertes Temps Réel</h3>
+          <p>Notifications instantanées sur votre appareil en cas d'anomalie</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon"><i class="ri-bar-chart-line"></i></div>
+          <h3>Tableau de Bord</h3>
+          <p>Visualisation complète de toutes les données de vos plantes en un coup d'œil</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <span class="section__label section__label--center">Questions Fréquentes</span>
+      <h2 class="section__title section__title--center">Tout ce que vous voulez savoir</h2>
+      <div class="faq__grid">
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            <span>Quels sont les avantages de PETYPLANT ?</span>
+            <i class="ri-add-line faq__icon"></i>
+          </button>
+          <div class="faq__answer">
+            <p>Notre système offre une utilisation optimale de l'eau, des réglages personnalisés pour une croissance saine, et un contrôle via interface web. Il s'adapte automatiquement aux conditions climatiques et aux besoins de chaque plante.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            <span>Comment l'arrosage est-il contrôlé à distance ?</span>
+            <i class="ri-add-line faq__icon"></i>
+          </button>
+          <div class="faq__answer">
+            <p>Via notre tableau de bord web dédié, vous pouvez surveiller et contrôler l'arrosage depuis n'importe où. L'interface affiche les données de tous les capteurs en temps réel avec des graphiques détaillés.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            <span>Quels types de plantes sont pris en charge ?</span>
+            <i class="ri-add-line faq__icon"></i>
+          </button>
+          <div class="faq__answer">
+            <p>Notre système s'adapte à toutes les espèces : plantes d'intérieur, jardin, potager et plantes tropicales. Les réglages sont entièrement configurables selon les besoins individuels de chaque type.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            <span>Quelle est la différence avec les méthodes traditionnelles ?</span>
+            <i class="ri-add-line faq__icon"></i>
+          </button>
+          <div class="faq__answer">
+            <p>Contrairement à l'arrosage manuel, notre système utilise des capteurs pour un arrosage précis et adapté en temps réel, éliminant toute surveillance constante et réduisant le gaspillage d'eau jusqu'à 60%.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            <span>Comment PETYPLANT garantit la fiabilité de ses capteurs ?</span>
+            <i class="ri-add-line faq__icon"></i>
+          </button>
+          <div class="faq__answer">
+            <p>Grâce à une sélection minutieuse, des tests rigoureux en conditions réelles et l'utilisation de matériaux résistants à l'humidité et aux variations de température, chaque capteur est certifié avant déploiement.</p>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            <span>Quels sont les bénéfices environnementaux ?</span>
+            <i class="ri-add-line faq__icon"></i>
+          </button>
+          <div class="faq__answer">
+            <p>Notre système réduit la consommation d'eau de 40 à 60%, diminue l'empreinte carbone liée à l'entretien et favorise une agriculture urbaine durable, contribuant ainsi à la préservation des ressources naturelles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section class="contact section" id="contact">
+    <div class="container contact__container">
+      <div class="contact__info">
+        <span class="section__label">Contact</span>
+        <h2 class="contact__info-title">Parlons de votre projet</h2>
+        <p class="contact__info-desc">
+          Vous avez des questions sur PETYPLANT ou souhaitez commander un système ?
+          Notre équipe vous répond rapidement.
+        </p>
+        <div class="contact__info-item">
+          <i class="ri-phone-line"></i>
+          <span>+212-539-940308</span>
+        </div>
+        <div class="contact__info-item">
+          <i class="ri-mail-line"></i>
+          <span>informations@emsi.ma</span>
+        </div>
+        <div class="contact__info-item">
+          <i class="ri-map-pin-line"></i>
+          <span>Angle Rue Omar Ibn Abdelaziz & Rue Sejelmassa, 90060 Tanger</span>
+        </div>
+      </div>
+      <form class="contact__form" id="contact-form" novalidate>
+        <div class="contact__group">
+          <div class="contact__field">
+            <label class="contact__label" for="name">Nom complet *</label>
+            <input type="text" id="name" name="name" class="contact__input" placeholder="Votre nom" required>
+          </div>
+          <div class="contact__field">
+            <label class="contact__label" for="email">Email *</label>
+            <input type="email" id="email" name="email" class="contact__input" placeholder="votre@email.com" required>
+          </div>
+        </div>
+        <div class="contact__field">
+          <label class="contact__label" for="subject">Objet *</label>
+          <input type="text" id="subject" name="subject" class="contact__input" placeholder="Sujet de votre message" required>
+        </div>
+        <div class="contact__field">
+          <label class="contact__label" for="message">Message *</label>
+          <textarea id="message" name="message" class="contact__input" placeholder="Votre message..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary">
+          Envoyer le Message <i class="ri-send-plane-line"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="#" class="nav__logo" style="margin-bottom:1rem; display:inline-flex;">
+          <i class="ri-leaf-line nav__logo-icon"></i><span>PETYPLANT</span>
+        </a>
+        <p>Une entreprise innovante spécialisée dans l'arrosage automatique intelligent à Tanger. Rapide, fiable et écologique.</p>
+        <div class="footer__subscribe">
+          <input type="email" placeholder="Votre email" aria-label="Email pour newsletter">
+          <button class="btn btn--primary btn--sm">S'inscrire</button>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__col-title">Navigation</h4>
+        <ul class="footer__links">
+          <li><a href="#home"        class="footer__link">Accueil</a></li>
+          <li><a href="#about"       class="footer__link">À Propos</a></li>
+          <li><a href="#features"    class="footer__link">Fonctionnalités</a></li>
+          <li><a href="products.html" class="footer__link">Produits</a></li>
+          <li><a href="dashboard.html" class="footer__link">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__col-title">Adresse</h4>
+        <ul class="footer__links">
+          <li><span class="footer__link">Angle Rue Omar Ibn Abdelaziz</span></li>
+          <li><span class="footer__link">& Rue Sejelmassa</span></li>
+          <li><span class="footer__link">90060 Tanger, Maroc</span></li>
+          <li><span class="footer__link">+212-539-940308</span></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__col-title">Suivez-Nous</h4>
+        <div class="footer__socials">
+          <a href="https://web.facebook.com/emsi.ma/" target="_blank" rel="noopener" class="footer__social" aria-label="Facebook">
+            <i class="ri-facebook-fill"></i>
+          </a>
+          <a href="https://www.instagram.com/groupe.emsi/" target="_blank" rel="noopener" class="footer__social" aria-label="Instagram">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="https://twitter.com/GroupeEMSI" target="_blank" rel="noopener" class="footer__social" aria-label="Twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2024 PETYPLANT. Tous droits réservés.</p>
+      <p class="footer__made">Réalisé avec <span>♥</span> par l'équipe EMSI Tanger</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCROLL UP ==================== -->
+<a href="#" class="scroll-up" id="scroll-up" aria-label="Retour en haut">
+  <i class="ri-arrow-up-line"></i>
+</a>
+
+
+<!-- ==================== CHATBOT (PETYBOT) ==================== -->
+<div class="chatbot-window" id="chatbot-window">
+  <div class="chatbot-header">
+    <div class="chatbot-header__info">
+      <div class="chatbot-header__avatar">
+        <i class="ri-robot-line"></i>
+      </div>
+      <div>
+        <div class="chatbot-header__title">PETYBOT</div>
+        <div class="chatbot-header__status" id="chatbot-status-text">En ligne</div>
+      </div>
+    </div>
+    <button class="chatbot-header__close" id="chatbot-close" aria-label="Fermer le chat">
+      <i class="ri-close-line"></i>
+    </button>
+  </div>
+
+  <div class="chatbot-messages" id="chatbot-messages">
+    <div class="chatbot-message chatbot-message--bot">
+      Bonjour ! Je suis <strong>PETYBOT</strong> 🌿, votre assistant botanique intelligent. 
+      Comment puis-je vous aider aujourd'hui ?
+    </div>
+  </div>
+
+  <div class="chatbot-suggestions">
+    <span class="chatbot-suggestion" onclick="sendSuggestion('Comment ça marche ?')">Comment ça marche ?</span>
+    <span class="chatbot-suggestion" onclick="sendSuggestion('Tarifs & Packs')">Tarifs & Packs</span>
+    <span class="chatbot-suggestion" onclick="sendSuggestion('Quels capteurs ?')">Quels capteurs ?</span>
+    <span class="chatbot-suggestion" onclick="sendSuggestion('Où commander ?')">Où commander ?</span>
+  </div>
+
+  <div class="chatbot-input-wrap">
+    <input type="text" id="chatbot-input" placeholder="Écrivez votre message..." autocomplete="off">
+    <button id="chatbot-send" aria-label="Envoyer">
+      <i class="ri-send-plane-fill"></i>
+    </button>
+  </div>
+</div>
+
+<button class="chatbot-toggle" id="chatbot-toggle" aria-label="Ouvrir le chat">
+  <i class="ri-chat-3-line"></i>
+</button>
+
+<script src="assets/js/scrollreveal.min.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js?v=2.0"></script>
+</body>
+</html>

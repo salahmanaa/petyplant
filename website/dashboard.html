@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PETYPLANT Dashboard — Tableau de bord IoT pour la gestion de vos plantes">
+  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <title>PETYPLANT — Dashboard IoT</title>
+</head>
+<body>
+
+<!-- ==================== SIDEBAR ==================== -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar__logo">
+    <i class="ri-leaf-line"></i>
+    <span>PETYPLANT</span>
+  </div>
+
+  <nav class="sidebar__nav">
+    <a href="#" class="sidebar__link active" data-section="overview" id="nav-overview">
+      <i class="ri-dashboard-line"></i><span>Vue d'ensemble</span>
+    </a>
+    <a href="#" class="sidebar__link" data-section="inventory" id="nav-inventory">
+      <i class="ri-plant-line"></i><span>Inventaire</span>
+    </a>
+    <a href="#" class="sidebar__link" data-section="sensors" id="nav-sensors">
+      <i class="ri-radar-line"></i><span>Capteurs</span>
+    </a>
+    <a href="#" class="sidebar__link" data-section="alerts" id="nav-alerts">
+      <i class="ri-alarm-warning-line"></i><span>Alertes</span>
+    </a>
+    <div class="sidebar__divider"></div>
+    <a href="index.html" class="sidebar__link">
+      <i class="ri-home-4-line"></i><span>Accueil</span>
+    </a>
+    <a href="products.html" class="sidebar__link">
+      <i class="ri-store-line"></i><span>Produits</span>
+    </a>
+  </nav>
+
+  <button class="sidebar__toggle-btn" id="sidebar-toggle" aria-label="Réduire la barre">
+    <i class="ri-arrow-left-s-line" id="toggle-icon"></i>
+  </button>
+
+  <div class="sidebar__bottom">
+    <div class="sidebar__avatar">SM</div>
+    <div class="sidebar__user-info">
+      <div class="sidebar__user-name">Salaheddine M.</div>
+      <div class="sidebar__user-role">Administrateur</div>
+    </div>
+  </div>
+</aside>
+
+<!-- ==================== MAIN ==================== -->
+<main class="dash-main" id="dash-main">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar__left">
+      <h1 id="topbar-title">Vue d'ensemble</h1>
+      <p id="topbar-subtitle">Bienvenue sur votre tableau de bord IoT</p>
+    </div>
+    <div class="topbar__right">
+      <div class="topbar__search">
+        <i class="ri-search-line"></i>
+        <input type="text" id="global-search" placeholder="Rechercher une plante...">
+      </div>
+      <button class="topbar__icon-btn" id="alert-btn" title="Alertes" aria-label="Alertes">
+        <i class="ri-notification-3-line"></i>
+        <span class="topbar__badge"></span>
+      </button>
+      <button class="topbar__icon-btn" id="refresh-btn" title="Actualiser" aria-label="Actualiser les données">
+        <i class="ri-refresh-line"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="dash-content">
+
+    <!-- ===== SECTION: OVERVIEW ===== -->
+    <section id="section-overview" class="dash-section">
+
+      <!-- KPI Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-card__icon"><i class="ri-plant-line"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpi-plants">9</div>
+            <div class="kpi-card__label">Plantes Totales</div>
+          </div>
+          <span class="kpi-card__trend up"><i class="ri-arrow-up-line"></i>+2 ce mois</span>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__icon amber"><i class="ri-temp-hot-line"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpi-temp">24°C</div>
+            <div class="kpi-card__label">Température Moy.</div>
+          </div>
+          <span class="kpi-card__trend up"><i class="ri-checkbox-circle-line"></i>Optimal</span>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__icon blue"><i class="ri-water-flash-line"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpi-humidity">72%</div>
+            <div class="kpi-card__label">Humidité Moy.</div>
+          </div>
+          <span class="kpi-card__trend up"><i class="ri-checkbox-circle-line"></i>Normal</span>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__icon red"><i class="ri-drop-line"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpi-water">68%</div>
+            <div class="kpi-card__label">Niveau d'Eau</div>
+          </div>
+          <span class="kpi-card__trend down"><i class="ri-arrow-down-line"></i>-5% depuis hier</span>
+        </div>
+      </div>
+
+      <!-- Sensor Panel -->
+      <div class="sensor-row">
+        <!-- Global Health Gauge -->
+        <div class="panel">
+          <div class="panel__header">
+            <span class="panel__title">Santé Globale</span>
+            <span class="panel__badge live">Live</span>
+          </div>
+          <div class="gauge-wrap">
+            <div class="gauge">
+              <svg viewBox="0 0 160 160" width="160" height="160">
+                <defs>
+                  <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%"   stop-color="#22c55e"/>
+                    <stop offset="100%" stop-color="#4ade80"/>
+                  </linearGradient>
+                </defs>
+                <circle class="gauge__track" cx="80" cy="80" r="68"/>
+                <circle class="gauge__bar" id="gauge-bar" cx="80" cy="80" r="68"
+                  stroke-dasharray="427.25" stroke-dashoffset="85.45"/>
+              </svg>
+              <div class="gauge__value" id="gauge-value">80%</div>
+            </div>
+            <p class="gauge__label">Score de santé des plantes</p>
+            <p class="gauge__sub" id="gauge-status">🌱 Toutes les plantes sont en bonne santé</p>
+          </div>
+        </div>
+
+        <!-- Live Sensors -->
+        <div class="panel">
+          <div class="panel__header">
+            <span class="panel__title">Lectures des Capteurs</span>
+            <span class="panel__badge live">Live</span>
+          </div>
+          <div class="sensor-list">
+            <div class="sensor-item">
+              <div class="sensor-item__icon" style="background:rgba(245,158,11,.1);color:#f59e0b"><i class="ri-temp-hot-line"></i></div>
+              <div style="min-width:90px">
+                <div class="sensor-item__label">Température</div>
+                <div class="sensor-item__value" id="s-temp">24.2°C</div>
+              </div>
+              <div class="sensor-item__bar-wrap">
+                <div class="sensor-item__bar" id="b-temp" style="width:48%;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div>
+              </div>
+              <span class="sensor-item__status status-ok">Optimal</span>
+            </div>
+            <div class="sensor-item">
+              <div class="sensor-item__icon" style="background:rgba(59,130,246,.1);color:#3b82f6"><i class="ri-water-flash-line"></i></div>
+              <div style="min-width:90px">
+                <div class="sensor-item__label">Humidité</div>
+                <div class="sensor-item__value" id="s-humid">72%</div>
+              </div>
+              <div class="sensor-item__bar-wrap">
+                <div class="sensor-item__bar" id="b-humid" style="width:72%;background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div>
+              </div>
+              <span class="sensor-item__status status-ok">Normal</span>
+            </div>
+            <div class="sensor-item">
+              <div class="sensor-item__icon" style="background:rgba(234,179,8,.1);color:#eab308"><i class="ri-sun-line"></i></div>
+              <div style="min-width:90px">
+                <div class="sensor-item__label">Luminosité</div>
+                <div class="sensor-item__value" id="s-light">850 lux</div>
+              </div>
+              <div class="sensor-item__bar-wrap">
+                <div class="sensor-item__bar" id="b-light" style="width:65%;background:linear-gradient(90deg,#eab308,#fde047)"></div>
+              </div>
+              <span class="sensor-item__status status-ok">Optimal</span>
+            </div>
+            <div class="sensor-item">
+              <div class="sensor-item__icon" style="background:rgba(74,222,128,.1);color:#4ade80"><i class="ri-drop-line"></i></div>
+              <div style="min-width:90px">
+                <div class="sensor-item__label">Niveau Eau</div>
+                <div class="sensor-item__value" id="s-water">68%</div>
+              </div>
+              <div class="sensor-item__bar-wrap">
+                <div class="sensor-item__bar" id="b-water" style="width:68%;background:linear-gradient(90deg,#22c55e,#4ade80)"></div>
+              </div>
+              <span class="sensor-item__status status-warn" id="ws-water">Faible</span>
+            </div>
+            <div class="sensor-item">
+              <div class="sensor-item__icon" style="background:rgba(168,85,247,.1);color:#a855f7"><i class="ri-leaf-line"></i></div>
+              <div style="min-width:90px">
+                <div class="sensor-item__label">Sol pH</div>
+                <div class="sensor-item__value" id="s-ph">6.8</div>
+              </div>
+              <div class="sensor-item__bar-wrap">
+                <div class="sensor-item__bar" id="b-ph" style="width:68%;background:linear-gradient(90deg,#a855f7,#c084fc)"></div>
+              </div>
+              <span class="sensor-item__status status-ok">Neutre</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rankings + Alerts -->
+      <div class="main-row">
+        <!-- Rankings -->
+        <div class="panel">
+          <div class="panel__header">
+            <span class="panel__title">Classements</span>
+          </div>
+          <div class="ranking-tabs">
+            <button class="tab-btn active" id="tab-users" onclick="showTab('users')">👥 Utilisateurs</button>
+            <button class="tab-btn" id="tab-plants" onclick="showTab('plants')">🌿 Plantes</button>
+          </div>
+          <div class="ranking-list" id="ranking-list"></div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="panel">
+          <div class="panel__header">
+            <span class="panel__title">Alertes Système</span>
+            <span class="panel__badge">3 actives</span>
+          </div>
+          <div class="alerts-list">
+            <div class="alert-item warn">
+              <i class="ri-alarm-warning-line"></i>
+              <span class="alert-text">Niveau d'eau du réservoir faible (68%)</span>
+              <span class="alert-time">Il y a 5 min</span>
+            </div>
+            <div class="alert-item ok">
+              <i class="ri-checkbox-circle-line"></i>
+              <span class="alert-text">Arrosage automatique effectué — Monstera</span>
+              <span class="alert-time">Il y a 1h</span>
+            </div>
+            <div class="alert-item ok">
+              <i class="ri-sun-line"></i>
+              <span class="alert-text">Niveau de luminosité optimal détecté</span>
+              <span class="alert-time">Il y a 2h</span>
+            </div>
+            <div class="alert-item danger">
+              <i class="ri-temp-hot-line"></i>
+              <span class="alert-text">Pic de température enregistré — 31°C</span>
+              <span class="alert-time">Hier 14h</span>
+            </div>
+            <div class="alert-item ok">
+              <i class="ri-wifi-line"></i>
+              <span class="alert-text">Connexion Arduino stable — 100%</span>
+              <span class="alert-time">En cours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== SECTION: INVENTORY ===== -->
+    <section id="section-inventory" class="dash-section" style="display:none">
+      <div class="panel">
+        <div class="panel__header">
+          <span class="panel__title">Inventaire des Plantes</span>
+          <span class="panel__badge" id="inv-count">9 plantes</span>
+        </div>
+        <div class="inv-filter-bar">
+          <div class="inv-search">
+            <i class="ri-search-line"></i>
+            <input type="text" id="inv-search" placeholder="Rechercher par nom...">
+          </div>
+        </div>
+        <div class="inv-grid" id="inv-grid"></div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION: SENSORS ===== -->
+    <section id="section-sensors" class="dash-section" style="display:none">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-card__icon"><i class="ri-cpu-line"></i></div>
+          <div><div class="kpi-card__value">5</div><div class="kpi-card__label">Capteurs Actifs</div></div>
+          <span class="kpi-card__trend up">Tous OK</span>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__icon amber"><i class="ri-timer-line"></i></div>
+          <div><div class="kpi-card__value">99.8%</div><div class="kpi-card__label">Disponibilité</div></div>
+          <span class="kpi-card__trend up">Excellent</span>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__icon blue"><i class="ri-wifi-line"></i></div>
+          <div><div class="kpi-card__value">Stable</div><div class="kpi-card__label">Connexion Arduino</div></div>
+          <span class="kpi-card__trend up">100%</span>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-card__icon red"><i class="ri-error-warning-line"></i></div>
+          <div><div class="kpi-card__value">1</div><div class="kpi-card__label">Anomalie Détectée</div></div>
+          <span class="kpi-card__trend down">Eau basse</span>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:0">
+        <div class="panel__header">
+          <span class="panel__title">Détail des Capteurs en Temps Réel</span>
+          <span class="panel__badge live">Live</span>
+        </div>
+        <div class="sensor-list">
+          <div class="sensor-item">
+            <div class="sensor-item__icon" style="background:rgba(245,158,11,.1);color:#f59e0b"><i class="ri-temp-hot-line"></i></div>
+            <div style="min-width:140px"><div class="sensor-item__label">Capteur de Température (DHT22)</div><div class="sensor-item__value" id="s2-temp">24.2°C</div></div>
+            <div class="sensor-item__bar-wrap"><div class="sensor-item__bar" id="b2-temp" style="width:48%;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div></div>
+            <span class="sensor-item__status status-ok">Optimal</span>
+          </div>
+          <div class="sensor-item">
+            <div class="sensor-item__icon" style="background:rgba(59,130,246,.1);color:#3b82f6"><i class="ri-water-flash-line"></i></div>
+            <div style="min-width:140px"><div class="sensor-item__label">Capteur d'Humidité (DHT22)</div><div class="sensor-item__value" id="s2-humid">72%</div></div>
+            <div class="sensor-item__bar-wrap"><div class="sensor-item__bar" id="b2-humid" style="width:72%;background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div></div>
+            <span class="sensor-item__status status-ok">Normal</span>
+          </div>
+          <div class="sensor-item">
+            <div class="sensor-item__icon" style="background:rgba(234,179,8,.1);color:#eab308"><i class="ri-sun-line"></i></div>
+            <div style="min-width:140px"><div class="sensor-item__label">Capteur de Luminosité (LDR)</div><div class="sensor-item__value" id="s2-light">850 lux</div></div>
+            <div class="sensor-item__bar-wrap"><div class="sensor-item__bar" id="b2-light" style="width:65%;background:linear-gradient(90deg,#eab308,#fde047)"></div></div>
+            <span class="sensor-item__status status-ok">Optimal</span>
+          </div>
+          <div class="sensor-item">
+            <div class="sensor-item__icon" style="background:rgba(74,222,128,.1);color:#4ade80"><i class="ri-drop-line"></i></div>
+            <div style="min-width:140px"><div class="sensor-item__label">Capteur Niveau d'Eau (HC-SR04)</div><div class="sensor-item__value" id="s2-water">68%</div></div>
+            <div class="sensor-item__bar-wrap"><div class="sensor-item__bar" id="b2-water" style="width:68%;background:linear-gradient(90deg,#22c55e,#4ade80)"></div></div>
+            <span class="sensor-item__status status-warn">Faible</span>
+          </div>
+          <div class="sensor-item">
+            <div class="sensor-item__icon" style="background:rgba(168,85,247,.1);color:#a855f7"><i class="ri-leaf-line"></i></div>
+            <div style="min-width:140px"><div class="sensor-item__label">Capteur Sol pH (SEN0161)</div><div class="sensor-item__value" id="s2-ph">6.8</div></div>
+            <div class="sensor-item__bar-wrap"><div class="sensor-item__bar" id="b2-ph" style="width:68%;background:linear-gradient(90deg,#a855f7,#c084fc)"></div></div>
+            <span class="sensor-item__status status-ok">Neutre</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION: ALERTS ===== -->
+    <section id="section-alerts" class="dash-section" style="display:none">
+      <div class="panel">
+        <div class="panel__header">
+          <span class="panel__title">Historique des Alertes</span>
+          <span class="panel__badge">5 alertes</span>
+        </div>
+        <div class="alerts-list">
+          <div class="alert-item warn"><i class="ri-alarm-warning-line"></i><span class="alert-text">Niveau d'eau du réservoir faible (68%) — Remplissage recommandé</span><span class="alert-time">Il y a 5 min</span></div>
+          <div class="alert-item ok"><i class="ri-checkbox-circle-line"></i><span class="alert-text">Arrosage automatique effectué avec succès — Monstera deliciosa</span><span class="alert-time">Il y a 1h</span></div>
+          <div class="alert-item ok"><i class="ri-sun-line"></i><span class="alert-text">Niveau de luminosité optimal détecté — 850 lux</span><span class="alert-time">Il y a 2h</span></div>
+          <div class="alert-item danger"><i class="ri-temp-hot-line"></i><span class="alert-text">Pic de température enregistré — 31°C, irrigation d'urgence déclenchée</span><span class="alert-time">Hier 14h</span></div>
+          <div class="alert-item ok"><i class="ri-wifi-line"></i><span class="alert-text">Connexion Arduino rétablie — Signal stable à 100%</span><span class="alert-time">Hier 09h</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLES (shown in all sections) -->
+    <div class="bottom-row">
+      <div class="panel">
+        <div class="panel__header"><span class="panel__title">Articles & Conseils</span></div>
+        <div class="article-list">
+          <div class="article-card">
+            <img src="assets/img/plants/im11.jpeg" alt="Plantes d'intérieur">
+            <div>
+              <div class="article-title">Entretien des Plantes d'Intérieur</div>
+              <div class="article-desc">Meilleures pratiques pour garder vos plantes en pleine santé.</div>
+              <a href="https://www.jardiland.com/conseils/entretien-des-plantes-d-interieur/" target="_blank" rel="noopener" class="article-link">Lire l'article →</a>
+            </div>
+          </div>
+          <div class="article-card">
+            <img src="assets/img/plants/im2.jpg" alt="Plantes dépolluantes">
+            <div>
+              <div class="article-title">Plantes Dépolluantes pour la Maison</div>
+              <div class="article-desc">Améliorez la qualité de l'air avec les bonnes plantes.</div>
+              <a href="https://www.gammvert.fr/conseils/conseils-de-jardinage/les-plantes-depolluantes-pour-la-maison" target="_blank" rel="noopener" class="article-link">Lire l'article →</a>
+            </div>
+          </div>
+          <div class="article-card">
+            <img src="assets/img/plants/55.jpg" alt="Succulentes">
+            <div>
+              <div class="article-title">Les Plantes Succulentes : Guide Complet</div>
+              <div class="article-desc">Comment prendre soin des succulentes, parfaites pour débutants.</div>
+              <a href="https://www.jardiner-malin.fr/fiche/succulente.html" target="_blank" rel="noopener" class="article-link">Lire l'article →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Users summary -->
+      <div class="panel">
+        <div class="panel__header"><span class="panel__title">Meilleurs Contributeurs</span></div>
+        <div class="ranking-list" id="users-summary"></div>
+      </div>
+    </div>
+
+  </div><!-- end dash-content -->
+</main>
+
+<a href="#" class="scroll-up" id="scroll-up" aria-label="Retour en haut">
+  <i class="ri-arrow-up-line"></i>
+</a>
+
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>

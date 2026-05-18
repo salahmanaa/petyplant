@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PETYPLANT — Découvrez nos packs d'arrosage automatique intelligent. Basic, Standard et Premium.">
+  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .products-hero { padding: calc(var(--header-h) + 4rem) 0 4rem; text-align: center; }
+    .products-hero h1 { font-size: clamp(2rem,4vw,3.2rem); margin-bottom: 1rem; }
+    .products-hero p  { color: var(--text-3); max-width: 560px; margin: 0 auto 3rem; }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 1rem; }
+    .pricing-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg); padding: 2.5rem 2rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+      transition: var(--transition); position: relative; overflow: hidden;
+    }
+    .pricing-card.featured {
+      border-color: var(--green-500);
+      box-shadow: var(--glow-md);
+    }
+    .pricing-card.featured::before {
+      content: 'Plus Populaire';
+      position: absolute; top: 1.25rem; right: -2rem;
+      background: linear-gradient(135deg,var(--green-500),var(--green-600));
+      color: #fff; font-size: .72rem; font-weight: 700;
+      padding: .3rem 3rem; transform: rotate(45deg);
+      letter-spacing: .06em;
+    }
+    .pricing-card:hover { transform: translateY(-6px); box-shadow: var(--glow-md); }
+    .pricing-card__badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .75rem; font-weight: 600; padding: .3rem .75rem;
+      border-radius: 999px; width: fit-content;
+    }
+    .badge-basic    { background: rgba(107,114,128,.15); color:#9ca3af; border:1px solid rgba(107,114,128,.3); }
+    .badge-standard { background: var(--green-dim); color: var(--green-400); border: 1px solid var(--card-border); }
+    .badge-premium  { background: rgba(168,85,247,.12); color:#c084fc; border: 1px solid rgba(168,85,247,.3); }
+    .pricing-card__name  { font-size: 1.1rem; font-weight: 700; color: var(--text-1); }
+    .pricing-card__price { display: flex; align-items: baseline; gap: .25rem; }
+    .pricing-card__amount { font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--text-1); }
+    .pricing-card__period { font-size: .9rem; color: var(--text-3); }
+    .pricing-card__desc  { font-size: .9rem; color: var(--text-3); line-height: 1.65; }
+    .pricing-card__divider { height: 1px; background: var(--card-border); }
+    .pricing-card__features { display: flex; flex-direction: column; gap: .8rem; flex: 1; }
+    .pricing-feature {
+      display: flex; align-items: center; gap: .65rem;
+      font-size: .88rem; color: var(--text-2);
+    }
+    .pricing-feature i { color: var(--green-400); flex-shrink: 0; }
+    .pricing-feature.no { color: var(--text-3); }
+    .pricing-feature.no i { color: var(--text-3); }
+
+    .product-showcase { padding: 5rem 0; background: var(--bg-2); }
+    .showcase-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+    .showcase-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition);
+    }
+    .showcase-card:hover { border-color: var(--card-hover); transform: translateY(-4px); box-shadow: var(--glow-sm); }
+    .showcase-card img { width: 100%; height: 200px; object-fit: contain; padding: 2rem; background: var(--bg-3); }
+    .showcase-card__body { padding: 1.5rem; }
+    .showcase-card__title { font-size: 1rem; font-weight: 700; color: var(--text-1); margin-bottom: .5rem; }
+    .showcase-card__desc  { font-size: .85rem; color: var(--text-3); line-height: 1.6; }
+
+    @media(max-width:768px){
+      .pricing-grid  { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <title>PETYPLANT — Nos Produits</title>
+</head>
+<body>
+
+<header class="header scrolled" id="header">
+  <nav class="nav container">
+    <a href="index.html" class="nav__logo">
+      <i class="ri-leaf-line nav__logo-icon"></i><span>PETYPLANT</span>
+    </a>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li><a href="index.html#home"     class="nav__link">Accueil</a></li>
+        <li><a href="index.html#about"    class="nav__link">À Propos</a></li>
+        <li><a href="index.html#features" class="nav__link">Fonctionnalités</a></li>
+        <li><a href="products.html"       class="nav__link active">Produits</a></li>
+        <li><a href="index.html#faq"      class="nav__link">FAQ</a></li>
+        <li><a href="index.html#contact"  class="nav__link">Contact</a></li>
+      </ul>
+      <button class="nav__close" id="nav-close"><i class="ri-close-line"></i></button>
+    </div>
+    <div class="nav__actions">
+      <a href="dashboard.html" class="btn btn--outline btn--sm"><i class="ri-dashboard-line"></i> Dashboard</a>
+      <button class="nav__toggle" id="nav-toggle"><i class="ri-menu-line"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main class="main">
+
+  <!-- HERO -->
+  <section class="products-hero">
+    <div class="container">
+      <span class="badge"><i class="ri-price-tag-3-line"></i> Nos Offres</span>
+      <h1>Choisissez votre <span class="text-gradient">Pack PETYPLANT</span></h1>
+      <p>Trois formules pensées pour chaque besoin, du jardinier débutant au passionné confirmé.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="pricing-grid">
+
+        <!-- BASIC -->
+        <div class="pricing-card">
+          <span class="pricing-card__badge badge-basic"><i class="ri-seedling-line"></i> Basic</span>
+          <div>
+            <div class="pricing-card__name">Pack Démarrage</div>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">599</span>
+              <span class="pricing-card__period">MAD / unité</span>
+            </div>
+          </div>
+          <p class="pricing-card__desc">L'essentiel pour démarrer l'arrosage automatique chez vous, simple et efficace.</p>
+          <div class="pricing-card__divider"></div>
+          <ul class="pricing-card__features">
+            <li class="pricing-feature"><i class="ri-check-line"></i> Capteur d'humidité du sol</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Pompe à eau automatique</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Microcontrôleur Arduino</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> 1 zone d'arrosage</li>
+            <li class="pricing-feature no"><i class="ri-close-line"></i> Capteur de température</li>
+            <li class="pricing-feature no"><i class="ri-close-line"></i> Capteur de luminosité</li>
+            <li class="pricing-feature no"><i class="ri-close-line"></i> Dashboard web</li>
+            <li class="pricing-feature no"><i class="ri-close-line"></i> Agent IA</li>
+          </ul>
+          <a href="index.html#contact" class="btn btn--ghost" style="text-align:center;justify-content:center">Commander</a>
+        </div>
+
+        <!-- STANDARD (featured) -->
+        <div class="pricing-card featured">
+          <span class="pricing-card__badge badge-standard"><i class="ri-star-line"></i> Standard</span>
+          <div>
+            <div class="pricing-card__name">Pack Intelligent</div>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">1 299</span>
+              <span class="pricing-card__period">MAD / unité</span>
+            </div>
+          </div>
+          <p class="pricing-card__desc">Le système complet avec capteurs multiples et tableau de bord pour un contrôle total.</p>
+          <div class="pricing-card__divider"></div>
+          <ul class="pricing-card__features">
+            <li class="pricing-feature"><i class="ri-check-line"></i> Capteur d'humidité du sol</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Capteur de température (DHT22)</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Capteur de luminosité (LDR)</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Capteur niveau d'eau</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Pompe à eau automatique</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Dashboard web complet</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> 3 zones d'arrosage</li>
+            <li class="pricing-feature no"><i class="ri-close-line"></i> Agent IA conversationnel</li>
+          </ul>
+          <a href="index.html#contact" class="btn btn--primary" style="text-align:center;justify-content:center">Commander</a>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="pricing-card">
+          <span class="pricing-card__badge badge-premium"><i class="ri-vip-crown-line"></i> Premium</span>
+          <div>
+            <div class="pricing-card__name">Pack Pro IA</div>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">2 199</span>
+              <span class="pricing-card__period">MAD / unité</span>
+            </div>
+          </div>
+          <p class="pricing-card__desc">La solution ultime avec IA intégrée, caméra de surveillance et contrôle illimité.</p>
+          <div class="pricing-card__divider"></div>
+          <ul class="pricing-card__features">
+            <li class="pricing-feature"><i class="ri-check-line"></i> Tous les capteurs Standard</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Caméra de surveillance HD</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Agent IA conversationnel</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Zones illimitées</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Alertes en temps réel</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Analyse prédictive</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Support prioritaire</li>
+            <li class="pricing-feature"><i class="ri-check-line"></i> Mises à jour à vie</li>
+          </ul>
+          <a href="index.html#contact" class="btn btn--ghost" style="text-align:center;justify-content:center;border-color:rgba(168,85,247,.4);color:#c084fc">Commander</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT SHOWCASE -->
+  <section class="product-showcase">
+    <div class="container">
+      <span class="section__label section__label--center">Matériel</span>
+      <h2 class="section__title section__title--center">Composants PETYPLANT</h2>
+      <div class="showcase-grid">
+        <div class="showcase-card">
+          <img src="assets/img/product1.png" alt="Capteur d'humidité">
+          <div class="showcase-card__body">
+            <div class="showcase-card__title">Capteur d'Humidité</div>
+            <div class="showcase-card__desc">Mesure précise de l'humidité du sol en temps réel pour déclencher l'arrosage au bon moment.</div>
+          </div>
+        </div>
+        <div class="showcase-card">
+          <img src="assets/img/product2.png" alt="Arduino">
+          <div class="showcase-card__body">
+            <div class="showcase-card__title">Microcontrôleur Arduino</div>
+            <div class="showcase-card__desc">Cerveau du système, traite toutes les données capteurs et contrôle l'ensemble du système d'irrigation.</div>
+          </div>
+        </div>
+        <div class="showcase-card">
+          <img src="assets/img/product3.png" alt="Pompe à eau">
+          <div class="showcase-card__body">
+            <div class="showcase-card__title">Pompe à Eau</div>
+            <div class="showcase-card__desc">Pompe silencieuse et éco-énergétique, activée automatiquement selon les besoins des plantes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom" style="border:none;padding:0">
+      <p class="footer__copy">&copy; 2024 PETYPLANT. Tous droits réservés.</p>
+      <p class="footer__made">Réalisé avec <span>♥</span> par l'équipe EMSI Tanger</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="scroll-up" id="scroll-up"><i class="ri-arrow-up-line"></i></a>
+
+<script>
+  const navToggle = document.getElementById('nav-toggle');
+  const navClose  = document.getElementById('nav-close');
+  const navMenu   = document.getElementById('nav-menu');
+  navToggle?.addEventListener('click', () => navMenu.classList.add('open'));
+  navClose?.addEventListener('click',  () => navMenu.classList.remove('open'));
+  window.addEventListener('scroll', () => {
+    document.getElementById('scroll-up')?.classList.toggle('show', window.scrollY>=400);
+  });
+</script>
+</body>
+</html>
